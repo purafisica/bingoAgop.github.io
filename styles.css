@@ -1,0 +1,46 @@
+#generate-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+
+#generate-btn:hover:enabled, #reset-btn:hover:enabled {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+#board .number-box {
+    border: 1px solid #ffffff;
+    padding: 20px;
+    font-size: 30px;
+    margin: 5px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#board .number-box.show {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+#board .number-box.recent {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+#manual-number {
+    width: 250px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#manual-select-container {
+    display: flex;
+    justify-content: center;
+}
+
+#current-number {
+    font-weight: bold;
+    display: none; /* Oculto hasta que se genere un número */
+}
