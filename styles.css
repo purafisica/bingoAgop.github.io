@@ -3,9 +3,9 @@
     cursor: not-allowed;
 }
 
-#generate-btn:hover:enabled, #reset-btn:hover:enabled {
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
+#generate-btn:hover:enabled, #reset-btn:hover:enabled, #sort-btn:hover:enabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
 }
 
 #board .number-box {
@@ -19,12 +19,12 @@
 }
 
 #board .number-box.show {
-    background-color: #6c757d;
+    background-color: #6c757d; /* Gris */
     color: #fff;
 }
 
 #board .number-box.recent {
-    background-color: #0d6efd;
+    background-color: #0d6efd; /* Azul claro */
     color: #fff;
 }
 

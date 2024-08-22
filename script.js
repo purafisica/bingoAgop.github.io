@@ -2,11 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const board = document.getElementById("board");
     const generateBtn = document.getElementById("generate-btn");
     const resetBtn = document.getElementById("reset-btn");
+    const sortBtn = document.getElementById("sort-btn");
     const manualCheckbox = document.getElementById("manual-checkbox");
     const aleatorioCheckbox = document.getElementById("aleatorio-checkbox");
     const manualSelectContainer = document.getElementById("manual-select-container");
     const manualNumberSelect = document.getElementById("manual-number");
-    const currentNumberDisplay = document.getElementById("current-number"); // Referencia al <div> que muestra el número actual
+    const currentNumberDisplay = document.getElementById("current-number");
     const maxNumbers = 90;
     const generatedNumbers = [];
     let lastNumberBox = null;
@@ -38,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     generateBtn.addEventListener("click", function () {
         document.getElementById('escudo').hidden = true;
-        document.getElementById('contador').hidden = false;
 
         let selectedNumber;
 
@@ -89,11 +89,37 @@ document.addEventListener("DOMContentLoaded", function () {
                 lastNumberBox.classList.add("show");
             }
 
+            // Cambiar color del último número por 3 segundos
+            numberBox.classList.add("recent");
+            setTimeout(() => {
+                numberBox.classList.remove("recent");
+                numberBox.classList.add("show");
+            }, 2000); // 2 segundos
+
+            // Añadir evento para cambiar color a verde (Bootstrap 5 bg-success) al hacer clic
+            numberBox.addEventListener("click", function () {
+                this.classList.toggle("bg-danger");
+            });
+
             lastNumberBox = numberBox;
+            document.getElementById('contador').hidden = false;
             document.getElementById('contador').innerText = 'Cantidad de números: ' + contador;
             toggleGenerateButton();
         }, 1500); // Esperar 1.5 segundos antes de mover el número al tablero
+    });
 
+    sortBtn.addEventListener("click", function () {
+        const numberBoxes = Array.from(board.getElementsByClassName("number-box"));
+        numberBoxes.sort((a, b) => parseInt(a.textContent) - parseInt(b.textContent));
+        
+        // Vaciar el tablero y volver a añadir los elementos ordenados
+        board.innerHTML = '';
+        numberBoxes.forEach(box => board.appendChild(box));
+
+        // Actualizar la referencia a lastNumberBox
+        if (numberBoxes.length > 0) {
+            lastNumberBox = numberBoxes[0];
+        }
     });
 
     resetBtn.addEventListener("click", resetForm);
