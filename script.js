@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     manualCheckbox.addEventListener("change", function () {
+        playSound('sound/action.mp3');
         aleatorioCheckbox.checked = !manualCheckbox.checked;
         manualSelectContainer.hidden = !manualCheckbox.checked;
         currentNumberDisplay.style.display = 'none'; // Ocultar el número actual
@@ -30,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     aleatorioCheckbox.addEventListener("change", function () {
+        playSound('sound/action.mp3');
         manualCheckbox.checked = !aleatorioCheckbox.checked;
         manualSelectContainer.hidden = aleatorioCheckbox.checked;
         currentNumberDisplay.style.display = 'none'; // Ocultar el número actual
@@ -109,22 +111,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     sortBtn.addEventListener("click", function () {
-        const numberBoxes = Array.from(board.getElementsByClassName("number-box"));
-        numberBoxes.sort((a, b) => parseInt(a.textContent) - parseInt(b.textContent));
-        
-        // Vaciar el tablero y volver a añadir los elementos ordenados
-        board.innerHTML = '';
-        numberBoxes.forEach(box => board.appendChild(box));
+        if (contador > 0) {
+            playSound('sound/action.mp3');
+            const numberBoxes = Array.from(board.getElementsByClassName("number-box"));
+            numberBoxes.sort((a, b) => parseInt(a.textContent) - parseInt(b.textContent));
 
-        // Actualizar la referencia a lastNumberBox
-        if (numberBoxes.length > 0) {
-            lastNumberBox = numberBoxes[0];
-        }
+            // Vaciar el tablero y volver a añadir los elementos ordenados
+            board.innerHTML = '';
+            numberBoxes.forEach(box => board.appendChild(box));
+
+            // Actualizar la referencia a lastNumberBox
+            if (numberBoxes.length > 0) {
+                lastNumberBox = numberBoxes[0];
+            }
+        };
     });
 
     resetBtn.addEventListener("click", resetForm);
 
     function resetForm() {
+        playSound('sound/action.mp3');
         contador = 0;
         document.getElementById('escudo').hidden = false;
         document.getElementById('contador').hidden = true;
