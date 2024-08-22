@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     sortBtn.addEventListener("click", function () {
-        if (contador > 0) {
+        if (contador > 1) {
             playSound('sound/action.mp3');
             const numberBoxes = Array.from(board.getElementsByClassName("number-box"));
             numberBoxes.sort((a, b) => parseInt(a.textContent) - parseInt(b.textContent));
