@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         playSound('sound/action.mp3');
         aleatorioCheckbox.checked = !manualCheckbox.checked;
         manualSelectContainer.hidden = !manualCheckbox.checked;
+        generateBtn.innerText = 'Cargar Número';
         currentNumberDisplay.style.display = 'none'; // Ocultar el número actual
         resetForm();
         toggleGenerateButton();
@@ -34,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         playSound('sound/action.mp3');
         manualCheckbox.checked = !aleatorioCheckbox.checked;
         manualSelectContainer.hidden = aleatorioCheckbox.checked;
+        generateBtn.innerText = 'Generar Número';
         currentNumberDisplay.style.display = 'none'; // Ocultar el número actual
         resetForm();
         toggleGenerateButton();
