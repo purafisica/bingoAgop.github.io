@@ -1,3 +1,5 @@
+// Autor: augusalterats
+// Propósito: Lógica para el funcionamiento del tablero de Bingo
 document.addEventListener("DOMContentLoaded", function () {
     const board = document.getElementById("board");
     const generateBtn = document.getElementById("generate-btn");
