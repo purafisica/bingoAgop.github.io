@@ -5,12 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const generateBtn = document.getElementById("generate-btn");
     const resetBtn = document.getElementById("reset-btn");
     const sortBtn = document.getElementById("sort-btn");
+    const undoBtn = document.getElementById("undo-btn");
     const manualCheckbox = document.getElementById("manual-checkbox");
     const aleatorioCheckbox = document.getElementById("aleatorio-checkbox");
     const manualSelectContainer = document.getElementById("manual-select-container");
     const manualNumberSelect = document.getElementById("manual-number");
     const currentNumberDisplay = document.getElementById("current-number");
-    const maxNumbers = 90;
+    const maxNumbers = 4;
     const generatedNumbers = [];
     let lastNumberBox = null;
     let contador = 0;
@@ -107,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.classList.toggle("bg-danger");
             });
 
+            undoBtn.disabled = false;
+
             lastNumberBox = numberBox;
             document.getElementById('contador').hidden = false;
             document.getElementById('contador').innerText = 'Cantidad de números: ' + contador;
@@ -128,10 +131,52 @@ document.addEventListener("DOMContentLoaded", function () {
             if (numberBoxes.length > 0) {
                 lastNumberBox = numberBoxes[0];
             }
+            undoBtn.disabled = true;
         };
     });
 
     resetBtn.addEventListener("click", resetForm);
+
+    undoBtn.addEventListener("click", function () {
+        if (generatedNumbers.length === 0) {
+            showMessage("No hay números para eliminar.", "danger");
+            return;
+        }
+
+        playSound('sound/action.mp3');
+
+        // Eliminar el último número del array y del DOM
+        const lastNumber = generatedNumbers.pop();
+        if (generatedNumbers.length > 0){
+            const penultimoNumber = generatedNumbers[generatedNumbers.length -1 ];
+            currentNumberDisplay.textContent = '👉' + penultimoNumber.toString().padStart(2, '0');
+            const lastNumberBox = board.querySelector(`.number-box:last-child`);
+            lastNumberBox.remove();
+        }
+
+        // Decrementar el contador
+        contador -= 1;
+        document.getElementById('contador').innerText = 'Cantidad de números: ' + contador;
+
+        // Reagregar la opción al select en modo manual
+        if (manualCheckbox.checked) {
+            const option = document.createElement("option");
+            option.value = lastNumber;
+            option.textContent = lastNumber.toString().padStart(2, '0');
+            manualNumberSelect.appendChild(option);
+        }
+
+        // Actualizar la visibilidad del botón de generar número
+        toggleGenerateButton();
+
+        // Si no hay más números, ocultar el contador
+        if (generatedNumbers.length === 0) {
+            document.getElementById('contador').hidden = true;
+            currentNumberDisplay.style.display = 'none'; // Ocultar el número actual
+            resetForm();
+        }
+
+    });
 
     function resetForm() {
         playSound('sound/action.mp3');

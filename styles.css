@@ -1,11 +1,15 @@
 /* Autor: augusalterats */
 /* Propósito: Estilos para el tablero de Bingo */
-#generate-btn:disabled {
+#generate-btn:disabled,
+#undo-btn:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
 }
 
-#generate-btn:hover:enabled, #reset-btn:hover:enabled, #sort-btn:hover:enabled {
+#generate-btn:hover:enabled,
+#reset-btn:hover:enabled,
+#sort-btn:hover:enabled,
+#undo-btn:hover:enabled {
     background-color: #6c757d;
     border-color: #6c757d;
 }
@@ -21,12 +25,14 @@
 }
 
 #board .number-box.show {
-    background-color: #6c757d; /* Gris */
+    background-color: #6c757d;
+    /* Gris */
     color: #fff;
 }
 
 #board .number-box.recent {
-    background-color: #0d6efd; /* Azul claro */
+    background-color: #0d6efd;
+    /* Azul claro */
     color: #fff;
 }
 
@@ -44,5 +50,7 @@
 
 #current-number {
     font-weight: bold;
-    display: none; /* Oculto hasta que se genere un número */
+    display: none;
+    /* Oculto hasta que se genere un número */
 }
+
