@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const manualSelectContainer = document.getElementById("manual-select-container");
     const manualNumberSelect = document.getElementById("manual-number");
     const currentNumberDisplay = document.getElementById("current-number");
-    const maxNumbers = 90;
+    const maxNumbers = 9;
     const generatedNumbers = [];
     let lastNumberBox = null;
     let contador = 0;
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         playSound('sound/action.mp3');
         aleatorioCheckbox.checked = !manualCheckbox.checked;
         manualSelectContainer.hidden = !manualCheckbox.checked;
-        generateBtn.innerText = 'Cargar Número';
+        generateBtn.innerText = 'Cargar';
         currentNumberDisplay.style.display = 'none'; // Ocultar el número actual
         resetForm();
         toggleGenerateButton();
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         playSound('sound/action.mp3');
         manualCheckbox.checked = !aleatorioCheckbox.checked;
         manualSelectContainer.hidden = aleatorioCheckbox.checked;
-        generateBtn.innerText = 'Generar Número';
+        generateBtn.innerText = 'Generar';
         currentNumberDisplay.style.display = 'none'; // Ocultar el número actual
         resetForm();
         toggleGenerateButton();
@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             undoBtn.disabled = false;
+            sortBtn.disabled = false;
 
             lastNumberBox = numberBox;
             document.getElementById('contador').hidden = false;
@@ -136,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 lastNumberBox = numberBoxes[0];
             }
             undoBtn.disabled = true;
+            sortBtn.disabled = true;
         };
     });
 
@@ -217,7 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
             option.textContent = i.toString().padStart(2, '0');
             manualNumberSelect.appendChild(option);
         }
-
+        undoBtn.disabled = false;
+        sortBtn.disabled = false;
         manualNumberSelect.value = "";
         toggleGenerateButton();
     }

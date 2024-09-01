@@ -1,15 +1,9 @@
 /* Autor: augusalterats */
 /* Propósito: Estilos para el tablero de Bingo */
 #generate-btn:disabled,
+#reset-btn:disabled,
+#sort-btn:disabled,
 #undo-btn:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-}
-
-#generate-btn:hover:enabled,
-#reset-btn:hover:enabled,
-#sort-btn:hover:enabled,
-#undo-btn:hover:enabled {
     background-color: #6c757d;
     border-color: #6c757d;
 }
@@ -53,4 +47,3 @@
     display: none;
     /* Oculto hasta que se genere un número */
 }
-
