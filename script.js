@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const manualSelectContainer = document.getElementById("manual-select-container");
     const manualNumberSelect = document.getElementById("manual-number");
     const currentNumberDisplay = document.getElementById("current-number");
-    const maxNumbers = 4;
+    const maxNumbers = 90;
     const generatedNumbers = [];
     let lastNumberBox = null;
     let contador = 0;
