@@ -118,6 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     sortBtn.addEventListener("click", function () {
+        if (generatedNumbers.length < 2) {
+            showMessage("No hay números para ordenar.", "danger");
+            return;
+        }
         if (contador > 1) {
             playSound('sound/action.mp3');
             const numberBoxes = Array.from(board.getElementsByClassName("number-box"));
