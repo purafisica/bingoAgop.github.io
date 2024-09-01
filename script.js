@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const manualSelectContainer = document.getElementById("manual-select-container");
     const manualNumberSelect = document.getElementById("manual-number");
     const currentNumberDisplay = document.getElementById("current-number");
-    const maxNumbers = 90;
+    const maxNumbers = 5;
     const generatedNumbers = [];
     let lastNumberBox = null;
     let contador = 0;
@@ -147,8 +147,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Eliminar el último número del array y del DOM
         const lastNumber = generatedNumbers.pop();
-        if (generatedNumbers.length > 0){
-            const penultimoNumber = generatedNumbers[generatedNumbers.length -1 ];
+        if (generatedNumbers.length > 0) {
+            const penultimoNumber = generatedNumbers[generatedNumbers.length - 1];
             currentNumberDisplay.textContent = '👉' + penultimoNumber.toString().padStart(2, '0');
             const lastNumberBox = board.querySelector(`.number-box:last-child`);
             lastNumberBox.remove();
@@ -164,6 +164,15 @@ document.addEventListener("DOMContentLoaded", function () {
             option.value = lastNumber;
             option.textContent = lastNumber.toString().padStart(2, '0');
             manualNumberSelect.appendChild(option);
+            const optionsArray = Array.from(manualNumberSelect.options);
+
+            // Ordenar las opciones por el valor numérico
+            optionsArray.sort((a, b) => parseInt(a.value) - parseInt(b.value));
+
+            // Vaciar el select y volver a añadir las opciones ordenadas
+            manualNumberSelect.innerHTML = '';
+            optionsArray.forEach(opt => manualNumberSelect.appendChild(opt));
+
         }
 
         // Actualizar la visibilidad del botón de generar número
