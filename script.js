@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const generatedNumbers = [];
     let lastNumberBox = null;
     let contador = 0;
-
+    const dateActual = new Date();
+    const anoActual = dateActual.getFullYear(); 
+    document.getElementById("titulo").innerText = 'Té Bingo '+ anoActual + ' - Colegio Secundario "Agop Seferian"';
     // Crear opciones para el select solo una vez
     for (let i = 1; i <= maxNumbers; i++) {
         const option = document.createElement("option");
