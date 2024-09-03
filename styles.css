@@ -47,3 +47,15 @@
     display: none;
     /* Oculto hasta que se genere un número */
 }
+
+/* Estilo de texto cizel */
+.text-dark {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700; /* Bold para un efecto más pronunciado */
+    color: #ffffff; /* Color principal del texto */
+    text-shadow: 
+    /*    1px 1px 0 #000000,  /* sombra negra para la profundidad */
+        2px 2px 0 #686767,  /* sombra gris oscuro */
+        3px 3px 0 #888888,  /* sombra gris intermedia */
+        4px 4px 0 #bbbbbb;  /* sombra gris clara para el efecto de luz */
+}
